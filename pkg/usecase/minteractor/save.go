@@ -295,18 +295,18 @@ func translateByRecords(text string, englishText string, records []domain.Transl
 
 	for _, row := range records {
 		if row.FileName == modelName && row.SourceName == jpText {
-			jpText = strings.ReplaceAll(jpText, row.SourceName, row.JapaneseName)
 			if englishText != "" && row.EnglishName != "" {
 				enText = row.EnglishName
 			}
+			return row.JapaneseName, enText
 		}
 	}
 	for _, row := range records {
 		if row.FileName == "" && row.SourceName == jpText {
-			jpText = strings.ReplaceAll(jpText, row.SourceName, row.JapaneseName)
 			if englishText != "" && row.EnglishName != "" {
 				enText = row.EnglishName
 			}
+			return row.JapaneseName, enText
 		}
 	}
 	for _, row := range records {
